@@ -1,3 +1,8 @@
+//Google Analytics
+if (typeof gtag === 'undefined') {
+    window.gtag = function() {};
+}
+
 // SMOOTH SCROLLING FOR ANCHOR LINKS
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
