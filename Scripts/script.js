@@ -26,14 +26,14 @@ document.querySelectorAll(`a[href^="#"]`).forEach(anchor => {
 
 //CONTACT BUTTON NAVIGATION
 
-document.querySelector(`.nav-btn`).addEventListener(`click`, function(){
+document.querySelector('.nav-btn').addEventListener('click', function(){
     openContactForm('Contact - Navigation');
 });
 
 //TC BUTTON & CONTACT BUTTON
 
-document.querySelectorAll(`.tc-btn, .bouton-contact`).forEach(button => {
-    button.addEventListener(`click`, function(e){
+document.querySelectorAll('.tc-btn, .bouton-contact').forEach(button => {
+    button.addEventListener('click', function(e){
         e.preventDefault();
         openContactForm('CTA Button');
     });
