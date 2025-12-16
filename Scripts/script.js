@@ -41,7 +41,7 @@ document.querySelectorAll('.tc-btn, .bouton-contact').forEach(button => {
 
 function openContactForm(source = 'Contact') {
     const modal = document.getElementById('contactModal');
-    modal.style.display = 'block';
+    modal.classList.add('active');
     
     // Envoyer événement à Google Analytics
     gtag('event', 'contact_form_open', {
@@ -103,6 +103,6 @@ function handleFormSubmit(event) {
 window.onclick = function(event) {
     const modal = document.getElementById('contactModal');
     if (event.target === modal) {
-        modal.style.display = 'none';
+        modal.classList.remove('active');
     }
 };
