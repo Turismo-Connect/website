@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Styles/style.css">
+    <title>Turismo Connect - Digital Marketing & Web Development</title>
+</head>
+
+<body>
+<!-- Barre de Navigation -->
+    <nav>
+        <a href="" class="logo">
+            <img src="Images/Logo Turismo Connect (1).png" alt="Turismo Connect">
+        </a>
+        <div class="logo">Turismo Connect</div>
+        <ul class="nav-links">
+            <li><a href="#services">Nos Services</a></li>
+            <li><a href="#process">Notre Processus</a></li>
+            <li><a href="#contact">Nous Contacter</a></li>
+        </ul>
+        <button class="nav-btn" style="transform: scale(1);" onclick="openContactForm()">Contact</button>   
+    </nav>
+
+<!-- Logo + contact landing page-->
+    <section class="tc">
+        <div class="tc-contenu">
+            <img src="Images/Logo Turismo Connect (1).png" alt="Turismo Connect" class="tc-logo">
+            <p>Transformez votre présence digitale en réservations directes</p>
+            <button class="tc-btn" style="transform: scale(1);" onclick="openContactForm('Demande d\'audit - Hero')">Demander un audit gratuit</button>
+        </div>
+    </section>
+
+<!-- Corps de la page -->
+    <section id="services">
+        <h2>Nos Services</h2>
+            <p>Solutions complètes pour développer votre présence en ligne.</p>
+            <div class="grille-service">
+                <div class="case-grille">
+                    <div class="service-icon">📱</div>
+                    <h3>Réseaux Sociaux</h3>
+                    <p>"Contenus adaptés et attractifs pour les voyageurs sur les différents réseaux sociaux pour améliorer votre présence."</p>
+                </div>
+                <div class="case-grille">
+                    <div class="service-icon">🗺️</div>
+                    <h3>Référencement Local</h3>
+                    <p>"Apparaissez en tête des recherches locales grâce au SEO et Google Maps optimisés."</p>
+                </div>
+                <div class="case-grille">
+                    <div class="service-icon">🔍</div>
+                    <h3>Audits Digitaux</h3>
+                    <p>"Analyses claires et actionnables de votre visibilité digitale pour un plan d'action concret."</p>
+                </div>
+                <div class="case-grille">
+                    <div class="service-icon">🌐</div>
+                    <h3>Développement Web</h3>
+                    <p>"Création de sites vitrines et landing pages optimisés pour convertir vos visiteurs en clients."</p>
+                </div>
+            </div>
+    </section>
+
+    <section id="process" class="process-section">
+        <h2>Notre Processus</h2>
+        <p>Une méthode claire, rapide et efficace en 4 temps</p>
+        <div class="process-timeline">
+            <div class="process-etape">
+                <div class="etape-numero">1</div>
+                <h3>Découverte</h3>
+                <p>Comprendre votre structure, vos enjeux et vos objectifs</p>
+            </div>
+            <div class="process-etape">
+                <div class="etape-numero">2</div>
+                <h3>Audit et Stratégie</h3>
+                <p>Analyser votre visibilité et élaborer un plan d'action</p>
+            </div>
+            <div class="process-etape">
+                <div class="etape-numero">3</div>
+                <h3>Implémentation</h3>
+                <p>Mettre en place les solutions adaptées à vos besoins</p>
+            </div>
+            <div class="process-etape">
+                <div class="etape-numero">4</div>
+                <h3>Suivi et Optimisation</h3>
+                <p>Mesurer les résultats et optimiser continuellement</p>
+            </div>
+        </div>
+    </section>
+
+<!-- Prise de contact -->
+    <section id="contact" class="contact">
+        <h2>Prêt à transformer votre présence digitale ?</h2>
+        <p>Faites-nous confiance et écrivez-nous dès à présent, l'aventure commence ici !</p>
+        <button class="bouton-contact" onclick="openContactForm('Demande d\'Audit - tc')">Planifier une consultation gratuit</button>
+    </section>
+
+    <footer>
+        <p>© 2025 Turismo Connect. Tous droits réservés.</p>
+        <p>Suivez-nous sur <a href="https://www.instagram.com/turismo.connect?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="instagram">Instagram</a></p>
+    </footer>
+
+    <script src="Scripts/script.js"></script>
+
+    <!-- Formulaire Pop-up (modal)-->
+    <div id="contactModel" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Conatctez-nous</h2>
+                <button class="close-btn" onclick="closeContactForm()">Soumettre</button>
+            </div>
+            <div class="form-success" id="formSuccess">
+                <p>✅ Merci nous avons reçu votre demande et nous vous contacterons très vite !</p>
+            </div>
+            <form id="contactForm" onsubmit="handleFormSubmit(event)">
+                <div class="form-group">
+                    <label for="nom">Nom complet *</label>
+                    <input type="text" id="nom" name="nom" required placeholder="Nom Prénom">                    
+                </div>
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" required placeholder="email@exemple.com">
+                </div>
+                <div class="form-group">
+                    <label  for="telephone">Téléphone *</label>
+                    <input type="tel" id="telephone" name="telephone" required placeholder="+33 6 11 12 13 14">
+                </div>                
+                <div class="form-group">
+                    <label for="structure">Type de Structure</label>
+                    <select id="structure" name="structure" required>
+                        <option value="">-- Sélectionnez--</option>
+                        <option value="hotel">Hôtel</option> 
+                        <option value="restaurant">Restaurant</option>
+                        <option value="maison_hotes">Maison d'Hôtes</option>
+                        <option value="agence_voyages">Agence de Voyage</option>
+                        <option value="guide">Guide Touristique</option>
+                        <option value="influenceur">Influenceur</option>
+                        <option value="autre">Autre</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message *</label>
+                    <textarea id="message" name="message" required placeholder="Décrivez votre projet..."></textarea>
+                </div>
+                <div class="form-group checkbox">
+                    <input type="checkbox" id="newsletter" name="newsletter">
+                    <label for="newsletter">Je souhaite recevoir des conseignes marketing par email</label>
+                </div>
+                <button type="submit" class="submit-btn">Envoyer ma demande</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
