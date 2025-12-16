@@ -104,10 +104,18 @@ function handleFormSubmit(event) {
     }, 3000);
 }
 
-// Fermer modal en cliquant dehors
-window.onclick = function(event) {
+/// Fermer modal en cliquant/touchant dehors
+window.addEventListener('click', function(event) {
     const modal = document.getElementById('contactModal');
     if (event.target === modal) {
-        modal.classList.remove('active');
+        closeContactForm();
     }
-};
+});
+
+// Aussi pour les touch events (iOS)
+window.addEventListener('touchstart', function(event) {
+    const modal = document.getElementById('contactModal');
+    if (event.target === modal) {
+        closeContactForm();
+    }
+}, false);

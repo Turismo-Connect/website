@@ -577,3 +577,33 @@ footer{
         font-size: 1.8rem;
     }
 }
+
+/* Pour les écrans mobiles */
+@media (max-width: 768px) {
+    nav {
+        padding: 8px 15px !important;
+    }
+    
+    nav ul {
+        display: none;
+    }
+    
+    nav .logo img {
+        height: 35px;
+    }
+    
+    .nav-btn {
+        padding: 8px 16px !important;
+        font-size: 14px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    nav {
+        padding: 6px 10px !important;
+    }
+    
+    nav .logo img {
+        height: 30px;
+    }
+}
