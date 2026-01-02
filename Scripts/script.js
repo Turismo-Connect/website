@@ -32,13 +32,14 @@ document.querySelector('.nav-btn').addEventListener('click', function() {
     openContactForm('Contact - Navigation');
 });
 
-// TC BUTTON & CONTACT BUTTON
-document.querySelectorAll('.tc-btn, .bouton-contact').forEach(button => {
-    button.addEventListener('click', function(e) {
+// TC BUTTON ONLY
+const tcBtn = document.querySelector('.tc-btn');
+if (tcBtn) {
+    tcBtn.addEventListener('click', function(e) {
         e.preventDefault();
-        openContactForm('CTA Button');
+        openContactForm('Demande d\'Audit');
     });
-});
+}
 
 // ═══════════════════════════════════════════════════════════════
 // MODAL FUNCTIONS - GLOBAL SCOPE (accessible from HTML)
@@ -46,24 +47,25 @@ document.querySelectorAll('.tc-btn, .bouton-contact').forEach(button => {
 
 function openContactForm(source = 'Contact') {
     const modal = document.getElementById('contactModal');
-    modal.classList.add('active');
-    
-    // Envoyer événement à Google Analytics
-    gtag('event', 'contact_form_open', {
-        'event_category': 'engagement',
-        'event_label': source
-    });
+    if (modal) {
+        modal.style.display = 'flex';
+        gtag('event', 'contact_form_open', {
+            'event_category': 'engagement',
+            'event_label': source
+        });
+    }
 }
 
 function closeContactForm() {
     const modal = document.getElementById('contactModal');
-    modal.style.display = 'none';
+    if (modal) {
+        modal.style.display = 'none';
+    }
 }
 
 function handleFormSubmit(event) {
     event.preventDefault();
     
-    // Récupérer les données du formulaire
     const formData = {
         nom: document.getElementById('nom').value,
         email: document.getElementById('email').value,
@@ -75,27 +77,22 @@ function handleFormSubmit(event) {
         source: 'Formulaire Turismo Connect'
     };
 
-    // Envoyer à Google Analytics
     gtag('event', 'form_submit', {
         'event_category': 'engagement',
         'event_label': 'Contact Form',
         'value': formData.structure
     });
 
-    // Sauvegarder dans localStorage (pour vérification locale)
     const submissions = JSON.parse(localStorage.getItem('turismoConnectSubmissions')) || [];
     submissions.push(formData);
     localStorage.setItem('turismoConnectSubmissions', JSON.stringify(submissions));
 
-    // LOG dans la console pour vérification
     console.log('✅ Formulaire soumis :', formData);
     console.log('📊 Toutes les soumissions :', JSON.parse(localStorage.getItem('turismoConnectSubmissions')));
 
-    // Afficher message de succès
     document.getElementById('formSuccess').style.display = 'block';
     document.getElementById('contactForm').style.display = 'none';
 
-    // Réinitialiser après 3 secondes
     setTimeout(() => {
         document.getElementById('contactForm').reset();
         document.getElementById('contactForm').style.display = 'block';
@@ -104,18 +101,18 @@ function handleFormSubmit(event) {
     }, 3000);
 }
 
-/// Fermer modal en cliquant/touchant dehors
+// Fermer modal en cliquant dehors
 window.addEventListener('click', function(event) {
     const modal = document.getElementById('contactModal');
-    if (event.target === modal) {
+    if (modal && event.target === modal) {
         closeContactForm();
     }
 });
 
-// Aussi pour les touch events (iOS)
+// Fermer modal avec toucher (iOS)
 window.addEventListener('touchstart', function(event) {
     const modal = document.getElementById('contactModal');
-    if (event.target === modal) {
+    if (modal && event.target === modal) {
         closeContactForm();
     }
 }, false);
